@@ -128,7 +128,7 @@
                                         <!-- item-->
                                         <a href="javascript:void(0);" class="dropdown-item notify-item text-muted link-primary">
                                             <div class="notify-icon">
-                                                <img src="assets/images/users/user-6.jpg" class="img-fluid rounded-circle" alt="" /> 
+                                                <img src=" {{ asset('backend/assets/images/users/user-6.jpg') }}" class="img-fluid rounded-circle" alt="" /> 
                                             </div>
                                             <div class="notify-content">
                                                 <div class="d-flex align-items-center justify-content-between">
@@ -151,35 +151,35 @@
         
                             <li class="dropdown notification-list topbar-dropdown">
                                 <a class="nav-link dropdown-toggle nav-user me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <img src="assets/images/users/user-11.jpg" alt="user-image" class="rounded-circle">
+                                    <img src=" {{ asset('backend/assets/images/users/user-11.jpg') }}" alt="user-image" class="rounded-circle">
                                     <span class="pro-user-name ms-1">
-                                        Christian <i class="mdi mdi-chevron-down"></i> 
+                                       علی احمدی <i class="mdi mdi-chevron-down"></i> 
                                     </span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
                                     <!-- item-->
-                                    <div class="dropdown-header noti-title">
-                                        <h6 class="text-overflow m-0">Welcome !</h6>
+                                    <div class="dropdown-header noti-title bg-success">
+                                        <h6 class="text-overflow m-0 text-white text-bold ">خوش امدید </h6>
                                     </div>
         
                                     <!-- item-->
                                     <a href="pages-profile.html" class="dropdown-item notify-item">
                                         <i class="mdi mdi-account-circle-outline fs-16 align-middle"></i>
-                                        <span>My Account</span>
+                                        <span>اکانت من </span>
                                     </a>
         
                                     <!-- item-->
                                     <a href="auth-lock-screen.html" class="dropdown-item notify-item">
                                         <i class="mdi mdi-lock-outline fs-16 align-middle"></i>
-                                        <span>Lock Screen</span>
+                                        <span>قفل صفحه</span>
                                     </a>
         
                                     <div class="dropdown-divider"></div>
         
                                     <!-- item-->
-                                    <a href="auth-logout.html" class="dropdown-item notify-item">
+                                    <a href="{{ route('admin.logout') }}" class="dropdown-item notify-item">
                                         <i class="mdi mdi-location-exit fs-16 align-middle"></i>
-                                        <span>Logout</span>
+                                        <span>خروج</span>
                                     </a>
         
                                 </div>
