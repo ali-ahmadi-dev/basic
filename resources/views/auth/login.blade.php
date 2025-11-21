@@ -58,14 +58,29 @@
                                     <div class="pt-0">
                                         <form method="POST" action="{{ route('login') }}" class="my-4">
                                             @csrf
+
+
+
+                                            {{-- @if (session('error'))
+                                                <div class="alrt alert-danger" >
+                                                    {{ session('error')}}
+                                                </div>
+                                            @endif --}}
+
                                             <div class="form-group mb-3">
                                                 <label for="emailaddress" class="form-label">ایمیل </label>
                                                 <input class="form-control" type="email" id="email" name="email" required="" placeholder="ایمیل  خود را وارد کنید">
+                                                @error('email')
+                                                    <small class="text-danger"> {{ $message }} </small>
+                                                @enderror
                                             </div>
                 
                                             <div class="form-group mb-3">
                                                 <label for="password" class="form-label">رمز عبور </label>
                                                 <input class="form-control" type="password" required="" name="password" id="password" placeholder="رمز خود را وارد کنید ">
+                                                @error('password')
+                                                    <small class="text-danger"> {{ $message }} </small>
+                                                @enderror
                                             </div>
                 
                                         
