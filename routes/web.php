@@ -35,7 +35,10 @@ require __DIR__.'/auth.php';
 // route admin end
 
 Route::middleware('auth')->group(function () {
+
 Route::get('/profile', [Admincontroller::class, 'AdminProfile'])->name('admin.profile');
+Route::post('/profile/store', [Admincontroller::class, 'ProfileStore'])->name('profile.store');
+
 });
 
 

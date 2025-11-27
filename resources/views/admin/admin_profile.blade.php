@@ -25,11 +25,11 @@
 
                     <div class="align-items-center">
                         <div class="d-flex align-items-center flex-row-reverse">
-                            <img src=" {{(!empty( $profiledata->photo)) ? url('upload/user_image/'.$profiledata->photo) :  url('upload/image_photo.jpg') }} "
+                            <img src=" {{(!empty( $profiledata->photo)) ? url('upload/user_images/'.$profiledata->photo) :  url('upload/image_photo.jpg') }} "
                                 class="rounded-circle avatar-xxl img-thumbnail float-end" alt="تصویر پروفایل">
 
                             <div class="overflow-hidden me-4 text-end">
-                                <h4 class="m-0 text-dark fs-20">{{$profiledata->photo}}</h4>
+                                <h4 class="m-0 text-dark fs-20">{{$profiledata->name}}</h4>
                                 <p class="my-1 text-muted fs-16"> {{ $profiledata->email }} </p>
                                 </span>
                             </div>
@@ -54,7 +54,7 @@
                                         </div>
                                     </div>
 
-                                    <form action="" method="POST">
+                                    <form action="{{ route('profile.store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                     <div class="card-body">
 
@@ -69,7 +69,7 @@
                                         <div class="form-group mb-3 row text-end">
                                             <label class="form-label">ایمیل</label>
                                             <div class="col-lg-12 col-xl-12">
-                                                <input class="form-control text-end" name="email" type="email" value="{{  $profiledata->email}}">
+                                                <input class="form-control text-end" name="" type="email"  value="{{  $profiledata->email}}">
                                             </div>
                                         </div>  
                                         
@@ -89,7 +89,7 @@
                                     <div class="form-group mb-3 row text-end">
                                             <label class="form-label"></label>
                                             <div class="col-lg-12 col-xl-12">
-                                                        <img src=" {{(!empty( $profiledata->photo)) ? url('upload/user_image/'.$profiledata->photo) :  url('upload/image_photo.jpg') }} "
+                                                        <img src=" {{(!empty( $profiledata->photo)) ? url('upload/user_images/'.$profiledata->photo) :  url('upload/image_photo.jpg') }} "
                                 class="rounded-circle avatar-xxl img-thumbnail float-end" id="showimage" alt="تصویر پروفایل">
                                             </div>
                                         </div>

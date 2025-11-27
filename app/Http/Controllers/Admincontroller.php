@@ -78,11 +78,68 @@ public function VerificationVerify(Request $request){
 
 
 
+
 public function AdminProfile(){
     $id = Auth::user()->id;
     $profiledata = User::find($id);
     return view('admin.admin_profile' , compact('profiledata'));
-}
+}//end method
+
+
+public function ProfileStore(Request $request)
+{
+    $id = Auth::user()->id;
+    $data = User::find($id);
+
+    // اعتبارسنجی داده‌ها
+    $request->validate([
+        'name' => 'nullable|string|max:255',
+        'email' => 'nullable|email|max:255',
+        'phone' => 'nullable|string|max:20',
+        'address' => 'nullable|string|max:500',
+        'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // فقط عکس تا 2MB
+    ]);
+
+    // آپدیت فقط فیلدهایی که مقدار دارند
+    if ($request->filled('name')) {
+        $data->name = $request->name;
+    }
+
+    if ($request->filled('email')) {
+        $data->email = $request->email;
+    }
+
+    if ($request->filled('phone')) {
+        $data->phone = $request->phone;
+    }
+
+    if ($request->filled('address')) {
+        $data->address = $request->address;
+    }
+
+    $oldPhoto = $data->photo;
+
+    // آپلود عکس جدید
+    if ($request->hasFile('photo')) {
+        $file = $request->file('photo');
+        $fileName = time() . '.' . $file->getClientOriginalExtension();
+        $file->move(public_path('upload/user_images'), $fileName);
+        $data->photo = $fileName;
+
+        // حذف عکس قدیمی
+        if ($oldPhoto && $oldPhoto !== $fileName) {
+            $oldFilePath = public_path('upload/user_images/' . $oldPhoto);
+            if (file_exists($oldFilePath)) {
+                unlink($oldFilePath);
+            }
+        }
+    }
+
+    // ذخیره تغییرات
+    $data->save();
+    return redirect()->back();
+
+}//end method
 
 
 }
