@@ -69,7 +69,7 @@
                                         <div class="form-group mb-3 row text-end">
                                             <label class="form-label">ایمیل</label>
                                             <div class="col-lg-12 col-xl-12">
-                                                <input class="form-control text-end" name="" type="email"  value="{{  $profiledata->email}}">
+                                                <input class="form-control text-end" name="email" type="email"  value="{{  $profiledata->email}}">
                                             </div>
                                         </div>  
                                         

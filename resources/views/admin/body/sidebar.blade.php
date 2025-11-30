@@ -52,7 +52,7 @@
                             <a href="{{ route('all.review') }}" class="tp-link"> همه بررسی‌ها  </a>
                         </li>
                         <li>
-                            <a href="auth-register.html" class="tp-link">افزودن نقد و بررسی  </a>
+                            <a href="{{ route('add.review') }}" class="tp-link">افزودن نقد و بررسی  </a>
                         </li>
                         
                     </ul>
