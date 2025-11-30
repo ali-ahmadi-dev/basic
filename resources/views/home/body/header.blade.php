@@ -59,13 +59,24 @@
         </div>
         <div class="col-auto d-flex align-items-center">
           <div class="lonyo-header-info-wraper2">
+   
             <div class="lonyo-header-info-content">
-              <ul>
-                <li><a href="sign-in.html">ورود</a></li>
+       
+              @auth
+            
+               <ul>
+                <li><a href="{{ route('dashboard') }}">پنل مدیریت </a></li>
               </ul>
+              @else
+               <ul>
+                <li><a href="{{ route('login') }}">ورود</a></li>
+              </ul>
+            @endauth
+
             </div>
             <a class="lonyo-default-btn lonyo-header-btn" href="conact-us.html">رزرو نسخه آزمایشی</a>
           </div>
+
           <div class="lonyo-header-menu">
             <nav class="navbar site-navbar justify-content-between">
               <!-- Brand Logo-->
