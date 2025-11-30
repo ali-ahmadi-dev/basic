@@ -5,6 +5,8 @@ use App\Models\Review;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Imagick\Driver;
 
 
 class ReviewController extends Controller
@@ -17,7 +19,7 @@ class ReviewController extends Controller
 
 
 
-   
+
       public function AddReview(){
      
       return view('admin.backend.review.add_review');
