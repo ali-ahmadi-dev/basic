@@ -51,7 +51,7 @@
 
                                                         <td>   <img src="{{ asset($item->image)}}" alt="" style="width: 20; height: 10; " > </td>
                             <td>
-                                <a href="" class="btn btn-success sm">ویرایش</a>
+                                <a href="{{ route('edit.review' , ['id' => $item->id]) }}" class="btn btn-success sm">ویرایش</a>
                                 <a href="" class=" btn btn-danger sm"> حذف</a>
                             </td>
                         </tr>
