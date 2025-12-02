@@ -76,11 +76,13 @@ Route::controller(ReviewController::class)->group(function(){
 
 
 
-
+// route slider
 
 Route::controller(SliderController::class)->group(function(){
 
     Route::get('/get/slider', 'GetSlider')->name('get.slider');
+     Route::post('/update/slider/{id}', 'UpdateSlider')->name('update.slider');
 
 });
 
+// route slider end

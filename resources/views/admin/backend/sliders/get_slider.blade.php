@@ -26,7 +26,7 @@
                         </div>
                     </div>
 
-                    <form action="{{ route('update.review', $slider->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('update.slider', $slider->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
 
@@ -52,10 +52,12 @@
                             </div>
 
                             <!-- Message -->
-                            <div class="form-group mb-3 text-end">
-                                <label class="form-label">لینک</label>
-                                <textarea class="form-control text-end" name="link">{{ $slider->link }}</textarea>
-               
+                             <div class="form-group mb-3 text-end">
+                                <label class="form-label">لینک </label>
+                                <input class="form-control text-end" name="link" value="{{ $slider->link }}" type="text">
+                             @error('link')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                             </div>
 
                             <!-- Image preview -->
