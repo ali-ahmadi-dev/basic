@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\VerificationCodeMail;
+use App\Models\Slider;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -193,6 +194,22 @@ public function PasswordUpdate(Request $request){
 
     return redirect()->route('login')->with($notification);
 }
+
+
+
+// public function EditSlider(Request $request , $id){
+     
+//    $slider = Slider::findOrFail($id);
+//     if ($request->has('title')) {
+//         $slider->title = $request->title;
+//     }
+//      if ($request->has('description')) {
+//         $slider->description = $request->description;
+//     }
+
+//     $slider->save();
+//     return response()->json(['success' => true]);
+// }
 
 
 }
