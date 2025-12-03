@@ -6,8 +6,8 @@
       <div class="row">
         <div class="col-lg-7 d-flex align-items-center">
           <div class="lonyo-hero-content" data-aos="fade-up" data-aos-duration="700">
-            <h1 class="hero-title">{{ $slider->title }}</h1>
-            <p class="text">{{ $slider->description }}</p>
+            <h1 id="slider-title" contenteditable="{{ auth()->check() ? 'true' : 'false' }}"  data-id="{{ $slider->id }}" class="hero-title">{{ $slider->title }}</h1>
+            <p id="slider-description" contenteditable="{{ auth()->check() ? 'true' : 'false' }}"  data-id="{{ $slider->id }}" class="text">{{ $slider->description }}</p>
             <div class="mt-50" data-aos="fade-up" data-aos-duration="900">
               <a href="{{ $slider->link}}" class="lonyo-default-btn hero-btn">ایجاد حساب کاربری رایگان</a>
             </div>
@@ -24,3 +24,56 @@
       </div>
     </div>
   </div>
+
+     
+
+ <meta name="crsf-token" content="{{ csrf_token() }}">
+
+<script>
+    
+document.addEventListener("DOMContentLoaded", () => {
+    const titleElement = document.getElementById("slider-title");
+    const descElement  = document.getElementById("slider-description");
+
+    async function saveChanges(element) {
+        const sliderId = element.dataset.id;
+        const field    = element.id === "slider-title" ? "title" : "description";
+        const newValue = element.innerText.trim();
+
+        const csrfToken = document
+            .querySelector('meta[name="csrf-token"]')
+            ?.getAttribute("content");
+
+        try {
+            const response = await fetch(`/edit-slider/${sliderId}`, {
+                method: "POST",
+                headers: {
+                    "X-CSRF-TOKEN": csrfToken,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ [field]: newValue })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                console.log(`${field} updated successfully`);
+            } else {
+                console.error("Update failed:", data);
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+
+    // نمونه اتصال event:
+    titleElement.addEventListener("blur", () => saveChanges(titleElement));
+    descElement.addEventListener("blur", () => saveChanges(descElement));
+});
+
+
+
+
+
+
+</script>            
